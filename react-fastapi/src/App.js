@@ -1,31 +1,20 @@
 import React from "react";
-import axios from "axios";
 import {BrowserRouter as Router, Link, Routes, Route} from "react-router-dom";
 import WxBotWebhook from "./ui/WxBotWebhook";
 import WeChatter from "./ui/WeChatter";
+import Admin from "./ui/Admin";
+import Bot from "./ui/Bot";
+import Chat from "./ui/Chat";
+import CopilotGPT4 from "./ui/CopilotGPT4";
+import GitHubWebhook from "./ui/GitHubWebhook";
+import MessageForwarding from "./ui/MessageForwarding";
+import WeatherCron from "./ui/Weather-Cron";
+import CustomCommandKey from "./ui/Custom-Command-Key";
+import GasolinePriceCron from "./ui/Gasoline-Price-Cron";
+import ConfigWeb from "./ui/ConfigWeb";
+
 
 function App() {
-    const [data, setData] = React.useState();//React.useState()是一个hook，用来在函数组件中添加state状态
-    const url = "http://127.0.0.1:8000";
-
-    const GetData = () => {
-        axios.get(url).then((res) => {//这里是什么意思：用axios发送一个get请求，然后用then来处理返回的数据
-            setData(res.data);
-        });
-    };
-
-    // return (
-    //     <div>
-    //         <div>我把处理写在这里</div>
-    //         {data ? <div>{data.Hello}</div> : <button onClick={GetData}>获取数据</button>}
-    //         <ConfigWeb/>
-    //         <div className="min-h-screen bg-gray-100">
-    //             {/* Your hhh.html content goes here */}
-    //             {/* ... */}
-    //         </div>
-    //     </div>
-    // );
-
 
     return (
         <Router>
@@ -44,44 +33,63 @@ function App() {
                                     </button>
                                 </div>
                                 <div className="flex-shrink-0 flex items-center">
-                                    <img className="block lg:hidden h-8 w-auto" src="https://placehold.co/32x32"
-                                         alt="Workflow logo"/>
-                                    <img className="hidden lg:block h-8 w-auto" src="https://placehold.co/32x32"
-                                         alt="Workflow logo"/>
+                                    <Link to="/ConfigWeb">
+                                        <svg t="1707717753098" className="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="7550" width="32" height="32">
+                                            <path
+                                                d="M806.826667 329.472a21.333333 21.333333 0 0 1 10.666666 18.474667v328.106666a21.333333 21.333333 0 0 1-10.666666 18.474667l-284.16 164.096a21.333333 21.333333 0 0 1-21.333334 0l-284.16-164.096a21.333333 21.333333 0 0 1-10.666666-18.474667v-328.106666a21.333333 21.333333 0 0 1 10.666666-18.474667l284.16-164.096a21.333333 21.333333 0 0 1 21.333334 0l284.16 164.096zM554.666667 109.952a85.333333 85.333333 0 0 0-85.333334 0L185.173333 274.048a85.333333 85.333333 0 0 0-42.666666 73.898667v328.106666a85.333333 85.333333 0 0 0 42.666666 73.898667L469.333333 914.048a85.333333 85.333333 0 0 0 85.333334 0l284.16-164.096a85.333333 85.333333 0 0 0 42.666666-73.898667v-328.106666a85.333333 85.333333 0 0 0-42.666666-73.898667L554.666667 109.952z"
+                                                fill="#333333" p-id="7551"></path>
+                                            <path
+                                                d="M512 618.666667a106.666667 106.666667 0 1 1 0-213.333334 106.666667 106.666667 0 0 1 0 213.333334z m0 64a170.666667 170.666667 0 1 0 0-341.333334 170.666667 170.666667 0 0 0 0 341.333334z"
+                                                fill="#333333" p-id="7552"></path>
+                                        </svg>
+                                    </Link>
                                 </div>
                                 <div className="hidden md:ml-6 md:flex md:space-x-8">
-                                    <Link to="/WeChatter"
+                                    <Link to="WeChatter"
                                           className="border-b-2 border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 focus:outline-none focus:border-indigo-700 transition">
                                         WeChatter
                                     </Link>
-                                    <Link to="/Wx-Bot-Webhook"
+                                    <Link to="Wx-Bot-Webhook"
                                           className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">
                                         Wx-Bot-Webhook
                                     </Link>
-                                    <a href="Admin"
-                                       className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">
+                                    <Link to="Admin"
+                                          className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">
                                         Admin
-                                    </a>
-                                    <a href="Bot"
-                                       className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">
+                                    </Link>
+                                    <Link to="Bot"
+                                          className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">
                                         Bot
-                                    </a>
-                                    <a href="Chat"
-                                       className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">
+                                    </Link>
+                                    <Link to="Chat"
+                                          className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">
                                         Chat
-                                    </a>
-                                    <a href="Copilot-GPT4"
-                                       className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">
+                                    </Link>
+                                    <Link to="Copilot-GPT4"
+                                          className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">
                                         Copilot-GPT4
-                                    </a>
-                                    <a href="GitHub-Webhook"
-                                       className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">
+                                    </Link>
+                                    <Link to="GitHub-Webhook"
+                                          className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">
                                         GitHub-Webhook
-                                    </a>
-                                    <a href="Message-Forwarding"
-                                       className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">
+                                    </Link>
+                                    <Link to="Message-Forwarding"
+                                          className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">
                                         Message-Forwarding
-                                    </a>
+                                    </Link>
+                                    <Link to="Weather-Cron"
+                                          className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">
+                                        Weather-Cron
+                                    </Link>
+                                    <Link to="Custom-Command-Key"
+                                          className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">
+                                        Custom-Command-Key
+                                    </Link>
+                                    <Link to="Gasoline-Price-Cron"
+                                          className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">
+                                        Gasoline-Price-Cron
+                                    </Link>
                                 </div>
                             </div>
                             <div className="flex items-center">
@@ -93,11 +101,12 @@ function App() {
                                 </div>
                                 <div className="ml-3 relative">
                                     <div>
-                                        <button
-                                            className="max-w-xs flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid transition">
-                                            <img className="h-8 w-8 rounded-full" src="https://placehold.co/32x32"
-                                                 alt="User avatar"/>
-                                        </button>
+                                        <svg t="1707717876986" className="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="8632" width="32" height="32">
+                                            <path
+                                                d="M512 0C229.376 0 0 229.376 0 512s229.376 512 512 512 512-229.376 512-512S794.624 0 512 0z m62.464 774.144c0 27.648-22.528 50.176-50.176 50.176h-25.088c-27.648 0-50.176-22.528-50.176-50.176V474.624c0-27.648 22.528-50.176 50.176-50.176h25.088c27.648 0 50.176 22.528 50.176 50.176v299.52zM512 349.696c-34.304 0-62.464-28.16-62.464-62.464 0-34.304 28.16-62.464 62.464-62.464s62.464 28.16 62.464 62.464c0 34.304-28.16 62.464-62.464 62.464z"
+                                                fill="#040000" p-id="8633"></path>
+                                        </svg>
                                     </div>
                                 </div>
                             </div>
@@ -112,104 +121,23 @@ function App() {
                         </h1>
                     </div>
                 </header>
-
+                <Routes>
+                    <Route path="/ConfigWeb" element={<ConfigWeb />} />
+                    <Route path="/wechatter" element={<WeChatter />} />
+                    <Route path="/wx-bot-webhook" element={<WxBotWebhook />} />
+                    <Route path="/admin" element={<Admin />} />
+                    <Route path="/bot" element={<Bot />} />
+                    <Route path="/chat" element={<Chat />} />
+                    <Route path="/copilot-gpt4" element={<CopilotGPT4 />} />
+                    <Route path="/github-webhook" element={<GitHubWebhook />} />
+                    <Route path="/message-forwarding" element={<MessageForwarding />} />
+                    <Route path="/weather-cron" element={<WeatherCron />} />
+                    <Route path="/custom-command-key" element={<CustomCommandKey />} />
+                    <Route path="/gasoline-price-cron" element={<GasolinePriceCron />} />
+                </Routes>
                 <main>
-                    <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-                        <div className="px-4 py-6 sm:px-0">
-                            <Routes>
-                                <Route path="/WeChatter" element={<WeChatter />} />
-                                <Route path="/Wx-Bot-Webhook" element={<WxBotWebhook />} />
-                            </Routes>
-                            {/*/!* WeChatter 配置 *!/*/}
-                            {/*<div className="border-4 border-dashed border-gray-200 rounded-lg mb-6">*/}
-                            {/*    <div className="flex flex-col items-center justify-center h-full">*/}
-                            {/*        <div className="text-center">*/}
-                            {/*            <h3 className="mb-4 text-lg leading-6 font-medium text-gray-900">*/}
-                            {/*                WeChatter*/}
-                            {/*            </h3>*/}
-                            {/*            <p className="mb-4 text-sm leading-5 text-gray-500">*/}
-                            {/*                在此处输入您的 WeChatter 信息。*/}
-                            {/*            </p>*/}
-                            {/*            <input type="text"*/}
-                            {/*                   className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm"*/}
-                            {/*                   placeholder="请输入"/>*/}
-                            {/*            <button*/}
-                            {/*                className="mt-4 px-4 py-2 bg-gray-800 text-white text-sm font-medium rounded-md">*/}
-                            {/*                保存*/}
-                            {/*            </button>*/}
-                            {/*        </div>*/}
-                            {/*    </div>*/}
-                            {/*</div>*/}
-
-                            {/*/!* Wx-Bot-Webhook 配置 *!/*/}
-                            {/*<div className="border-4 border-dashed border-gray-200 rounded-lg mb-6">*/}
-                            {/*    <div className="flex flex-col items-center justify-center h-full">*/}
-                            {/*        <div className="text-center">*/}
-                            {/*            <h3 className="mb-4 text-lg leading-6 font-medium text-gray-900">*/}
-                            {/*                Wx-Bot-Webhook*/}
-                            {/*            </h3>*/}
-                            {/*            <p className="mb-4 text-sm leading-5 text-gray-500">*/}
-                            {/*                在此处输入您的 Wx-Bot-Webhook 信息。*/}
-                            {/*            </p>*/}
-                            {/*            <input type="text"*/}
-                            {/*                   className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm"*/}
-                            {/*                   placeholder="请输入"/>*/}
-                            {/*            <button*/}
-                            {/*                className="mt-4 px-4 py-2 bg-gray-800 text-white text-sm font-medium rounded-md">*/}
-                            {/*                保存*/}
-                            {/*            </button>*/}
-                            {/*        </div>*/}
-                            {/*    </div>*/}
-                            {/*</div>*/}
-
-                            {/*/!* Admin 配置 *!/*/}
-                            {/*<div className="border-4 border-dashed border-gray-200 rounded-lg mb-6">*/}
-                            {/*    <div className="flex flex-col items-center justify-center h-full">*/}
-                            {/*        <div className="text-center">*/}
-                            {/*            <h3 className="mb-4 text-lg leading-6 font-medium text-gray-900">*/}
-                            {/*                Admin*/}
-                            {/*            </h3>*/}
-                            {/*            <p className="mb-4 text-sm leading-5 text-gray-500">*/}
-                            {/*                在此处输入您的 Admin 信息。*/}
-                            {/*            </p>*/}
-                            {/*            <input type="text"*/}
-                            {/*                   className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm"*/}
-                            {/*                   placeholder="请输入"/>*/}
-                            {/*            <button*/}
-                            {/*                className="mt-4 px-4 py-2 bg-gray-800 text-white text-sm font-medium rounded-md">*/}
-                            {/*                保存*/}
-                            {/*            </button>*/}
-                            {/*        </div>*/}
-                            {/*    </div>*/}
-                            {/*</div>*/}
-
-                            {/* Add other configuration sections here */}
-                            {/* Example: */}
-                            {/* <div className="border-4 border-dashed border-gray-200 rounded-lg mb-6">
-              <div className="flex flex-col items-center justify-center h-full">
-                <div className="text-center">
-                  <h3 className="mb-4 text-lg leading-6 font-medium text-gray-900">
-                    Your Configuration Title
-                  </h3>
-                  <p className="mb-4 text-sm leading-5 text-gray-500">
-                    Your configuration description.
-                  </p>
-                  <input type="text"
-                    className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-                    placeholder="Your input placeholder" />
-                  <button
-                    className="mt-4 px-4 py-2 bg-gray-800 text-white text-sm font-medium rounded-md">
-                    Save
-                  </button>
-                </div>
-              </div>
-            </div> */}
-                            {/* Add other configuration sections as per your requirement */}
-                        </div>
-                    </div>
 
                 </main>
-
             </div>
         </Router>
     );
