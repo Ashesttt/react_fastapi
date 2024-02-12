@@ -9,8 +9,7 @@ logging.basicConfig(level=logging.DEBUG)
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000",
-    "http://47.92.99.199:30"
+    "http://localhost:3000"
 ]
 
 app.add_middleware(
