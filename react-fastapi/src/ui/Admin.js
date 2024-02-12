@@ -13,6 +13,7 @@ function Admin() {
     if (error) {
         return (
             <div>
+                <div>error: {error.value}</div>
                 <div>Error: {error.message}</div>
                 <div>Status: {error.response && error.response.status}</div>
                 <div>Headers: {error.response && JSON.stringify(error.response.headers)}</div>
