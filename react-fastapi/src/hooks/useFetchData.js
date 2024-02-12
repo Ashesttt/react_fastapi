@@ -1,20 +1,25 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
 function useFetchData(path) {
     const [data, setData] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         axios.get(`http://127.0.0.1:8000/${path}`)
             .then(res => {
-                console.log(res.data);
                 setData(res.data);
+                setIsLoading(false);
             })
             .catch(err => {
                 console.error(err);
+                setError(err.message);
+                setIsLoading(false);
             });
-    }, [path]);  // 注意这里，当path改变时，useEffect会重新执行
-    return [data, setData];
+    }, [path]);  // 当path改变时，useEffect会重新执行
+
+    return [data, setData, isLoading, error];
 }
+
 export default useFetchData;

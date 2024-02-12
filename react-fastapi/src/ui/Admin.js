@@ -4,12 +4,15 @@ import useFetchData from '../hooks/useFetchData';
 import useSaveConfig from '../hooks/useSaveConfig';
 
 function Admin() {
-    const [config, setConfig] = useFetchData('admin');
+    const [config, setConfig, isLoading, error] = useFetchData('admin');
     const handleSave = useSaveConfig('admin', config);
-    if (config === null) {
-        return <div>Loading...(获取失败)</div>;
+    if (isLoading) {
+        return <div>Loading...</div>;
     }
 
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     return (
         <div className="border-4 border-dashed border-gray-200 rounded-lg mb-6">
