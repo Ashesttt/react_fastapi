@@ -5,6 +5,9 @@ import useSaveConfig from '../hooks/useSaveConfig';
 
 function Admin() {
     const [config, setConfig] = useFetchData('admin');
+    if (config === null) {
+        return <div>Loading...(获取失败)</div>;
+    }
     const handleSave = useSaveConfig('admin', config);
 
 
