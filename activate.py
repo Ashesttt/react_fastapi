@@ -1,4 +1,5 @@
 import subprocess
+import threading
 
 def run_command(command, working_directory):
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, cwd=working_directory)
@@ -15,6 +16,15 @@ if __name__ == '__main__':
     frontend_command = "npm start"
     backend_directory = "back-react-fastapi"
     frontend_directory = "react-fastapi"
-    run_command(backend_command, backend_directory)
-    run_command(frontend_command, frontend_directory)
-    print("All commands have been executed successfully")
+
+    backend_thread = threading.Thread(target=run_command, args=(backend_command, backend_directory))
+    frontend_thread = threading.Thread(target=run_command, args=(frontend_command, frontend_directory))
+
+    backend_thread.start()
+    print("backend started")
+    frontend_thread.start()
+    print("frontend started")
+
+    backend_thread.join()
+    frontend_thread.join()
+
