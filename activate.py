@@ -1,6 +1,7 @@
 import subprocess
 import threading
 
+
 def run_command(command, working_directory):
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, cwd=working_directory)
     while True:
@@ -11,10 +12,11 @@ def run_command(command, working_directory):
             print(output.strip())
     return process.poll()
 
+
 if __name__ == '__main__':
     backend_command = "uvicorn main:app --reload"
     frontend_command = "npm start"
-    backend_directory = "back-react-fastapi"
+    backend_directory = "react-fastapi"
     frontend_directory = "react-fastapi"
 
     backend_thread = threading.Thread(target=run_command, args=(backend_command, backend_directory))
@@ -27,4 +29,3 @@ if __name__ == '__main__':
 
     backend_thread.join()
     frontend_thread.join()
-
