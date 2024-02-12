@@ -11,7 +11,14 @@ function Admin() {
     }
 
     if (error) {
-        return <div>Error: {error}</div>;
+        return (
+            <div>
+                <div>Error: {error.message}</div>
+                <div>Status: {error.response && error.response.status}</div>
+                <div>Headers: {error.response && JSON.stringify(error.response.headers)}</div>
+                <div>Data: {error.response && JSON.stringify(error.response.data)}</div>
+            </div>
+        );
     }
 
     return (
