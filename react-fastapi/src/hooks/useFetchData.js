@@ -14,7 +14,7 @@ function useFetchData(path) {
             })
             .catch(err => {
                 console.error(err);
-                setError(err.message);
+                setError(err);
                 setIsLoading(false);
             });
     }, [path]);  // 当path改变时，useEffect会重新执行
