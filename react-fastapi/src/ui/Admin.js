@@ -11,9 +11,10 @@ function Admin() {
     }
 
     if (error) {
+        console.error(error);
         return (
             <div>
-                <div>error: {error.value}</div>
+                <div>error: {error}</div>
                 <div>Error: {error.message}</div>
                 <div>Status: {error.response && error.response.status}</div>
                 <div>Headers: {error.response && JSON.stringify(error.response.headers)}</div>
