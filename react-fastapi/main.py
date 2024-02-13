@@ -25,7 +25,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# app.mount("/", StaticFiles(directory="build", html=True), name="react-app")
+app.mount("/", StaticFiles(directory="build", html=True), name="react-app")
 
 
 def get_config_section(section_name):
@@ -55,9 +55,9 @@ def update_config_section(section_name, updated_config):
     except Exception as e:
         return {"error": str(e)}
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+# @app.get("/")
+# def read_root():
+#     return {"Hello": "World"}
 
 
 @app.get("/wechatter")
