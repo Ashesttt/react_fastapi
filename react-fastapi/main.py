@@ -4,6 +4,7 @@ import logging
 from fastapi import Body
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 logging.basicConfig(level=logging.DEBUG)
 app = FastAPI()
@@ -21,6 +22,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.mount("/", StaticFiles(directory="react-fastapi/build", html=True), name="react-app")
 
 
 def get_config_section(section_name):
