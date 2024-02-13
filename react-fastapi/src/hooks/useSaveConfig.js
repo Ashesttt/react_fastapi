@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function useSaveConfig(configName, config) {
     return useCallback(() => {
-        axios.post(`http://127.0.0.1:8000/cfw/${configName}`, config)
+        axios.post(`http://127.0.0.1:8000/${configName}`, config)
         // axios.post(`http://47.92.99.199:30/api/${configName}`, config)
         // axios.post(`http://47.92.99.199:8000/${configName}`, config)
             .then(res => {
