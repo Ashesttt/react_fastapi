@@ -24,7 +24,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/cfw", StaticFiles(directory="build", html=True), name="react-app")
+app.mount("/cfw/", StaticFiles(directory="build", html=True), name="react-app")
 
 
 def get_config_section(section_name):
