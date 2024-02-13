@@ -124,7 +124,7 @@ function App() {
                 <Routes>
                     <Route path="*" element={window.location.pathname.startsWith('/api') ? null : <ConfigWeb />} />
                     <Route path="/ConfigWeb" element={<ConfigWeb />} />
-                    <Route path="/wechatter" element={<WeChatter />} />
+                    <Route path="/api/wechatter" element={<WeChatter />} />
                     <Route path="/wx-bot-webhook" element={<WxBotWebhook />} />
                     <Route path="/admin" element={<Admin />} />
                     <Route path="/bot" element={<Bot />} />
