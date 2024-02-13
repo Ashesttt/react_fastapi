@@ -7,7 +7,7 @@ function useFetchData(path) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/${path}`)
+        axios.get(`http://0.0.0.0:8000/${path}`)
         // axios.get(`http://47.92.99.199:30/api/${path}`)
         // axios.get(`http://47.92.99.199:8000/${path}`)
             .then(res => {
