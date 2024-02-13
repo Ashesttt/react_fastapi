@@ -25,7 +25,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/", StaticFiles(directory="build", html=True), name="react-app")
+# app.mount("/", StaticFiles(directory="build", html=True), name="react-app")
 
 
 def get_config_section(section_name):
@@ -60,12 +60,12 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.get("/api/wechatter")
+@app.get("/wechatter")
 def get_wechatter_config():
     return get_config_section('wechatter')
 
 
-@app.post("/api/wechatter")
+@app.post("/wechatter")
 def update_wechatter_config(updated_config: dict = Body(...)):
     return update_config_section('wechatter', updated_config)
 
