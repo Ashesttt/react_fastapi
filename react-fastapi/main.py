@@ -60,12 +60,12 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.get("/wechatter")
+@app.get("/api/wechatter")
 def get_wechatter_config():
     return get_config_section('wechatter')
 
 
-@app.post("/wechatter")
+@app.post("/api/wechatter")
 def update_wechatter_config(updated_config: dict = Body(...)):
     return update_config_section('wechatter', updated_config)
 
